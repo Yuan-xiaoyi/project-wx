@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/user/user",
+    "pages/index/index",
+    "pages/category/category",
+    "pages/project_list/project_list",
+    "pages/project_detail/project_detail",
+    "pages/task_list/task_list",
+    "pages/task_detail/task_detail",
+    "pages/search/search",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#006699",
+    "navigationBarTitleText": "项目管理",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#006699",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/project_list/project_list",
+        "text": "项目",
+        "iconPath": "icons/project_list.png",
+        "selectedIconPath": "icons/project_list-o.png"
+      },
+      {
+        "pagePath": "pages/task_list/task_list",
+        "text": "任务",
+        "iconPath": "icons/task.png",
+        "selectedIconPath": "icons/task-o.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "icons/user.png",
+        "selectedIconPath": "icons/user-o.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

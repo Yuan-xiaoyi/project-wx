@@ -1,0 +1,19 @@
+/**app.wxss**/
+@import "./styles/iconfont.wxss";
+
+page,view,text,swiper,swiper-item,image,navigator{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* 主题颜色 通过变量来实现*/
+page{
+  /* 定义主题颜色*/
+   --themeColor:#006699;
+  /* 文本背景颜色 */
+  --textBgColor: #F1F1F1;
+
+  /* 定义统一的字体大小*/
+  font-size: 28rpx;
+}
