@@ -1,0 +1,3 @@
+<!--pages/login/login.wxml-->
+<button class="authbtn"  open-type="getPhoneNumber" type="primary"
+      bindgetphonenumber="onGetPhoneNumber">获取手机号码</button>

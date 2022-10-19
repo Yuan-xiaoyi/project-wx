@@ -1,0 +1,7 @@
+<!--components/SearchInput/SearchInput.wxml-->
+ <view class="search_input">
+    <view class="search_input_item" bindtap="gotoSearch" hover-class="search_input_item_hover">
+      搜索
+    </view>
+    
+</view>

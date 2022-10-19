@@ -1,0 +1,14 @@
+<!--pages/category/category.wxml-->
+<view class="pm_category">
+  <SearchInput searchType="project"></SearchInput>
+
+  <view class="hotService_content">
+    <block wx:for="{{typeList}}" wx:key="index">
+      <view class="blockContent block{{index}} block" hover-class="blockContent_hover"
+        bindtap="choose" data-index="{{item}}">
+        <text>{{item.label}}</text>
+      </view>
+    </block>
+  </view>
+  
+</view>

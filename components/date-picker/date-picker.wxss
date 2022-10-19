@@ -1,0 +1,31 @@
+/* components/date-picker/date-picker.wxss */
+.picker-class {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: 1rpx lightgray solid;
+  border-radius: 10rpx;
+  padding: 0rpx 10rpx;
+}
+
+picker {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.placeholder {
+  color: #999FB1;
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.value-style {
+  color: #131936;
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}

@@ -1,0 +1,65 @@
+<!--pages/task_detail/task_detail.wxml-->
+<view class="containter">
+  <view class="details">
+    <text class="detail_label">任务名称</text>
+    <text class="detail_value detail_context">{{task.taskName}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">创建人</text>
+    <text class="detail_value detail_context">{{task.createPerson}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">创建时间</text>
+    <text class="detail_value detail_context">{{task.createTime}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">任务截至时间</text>
+    <text class="detail_value detail_context">{{task.deadline}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">任务详情</text>
+    <text class="detail_value">{{task.details}}</text>
+  </view>
+  <view class="details" wx:if="{{task.userName}}">
+    <text class="detail_label">处理人</text>
+    <text class="detail_value">{{task.userName}}</text>
+  </view>
+
+  <view wx:for="{{list}}" wx:key="index" class="details_father">
+    <view class="details" wx:if="{{item.solveDetails}}">
+      <text class="detail_label">处理详情</text>
+      <text class="detail_value">{{item.solveDetails}}</text>
+    </view>
+    <view class="details" wx:if="{{item.checkDetails}}">
+      <text class="detail_label">审核详情</text>
+      <text class="detail_value">{{item.checkDetails}}</text>
+    </view>
+  </view>
+
+
+  <view class="details" wx:if="{{(taskRecordState == 0 || taskRecordState == 3) && isCurrentRWdealer}}" >
+    <text class="detail_label" style="margin-bottom: 20rpx;">处理</text>
+    <textarea class="areainput" name="remark" placeholder="请输入处理情况"
+      auto-focus="true"
+      bindinput="inputDeal"
+    />
+    <view class="details">
+      <button type="primary" bindtap="submit">提交</button>
+    </view>
+  </view>
+
+  <view class="details" wx:if="{{taskRecordState == 1 && isCurrentRWchecker}}">
+    <text class="detail_label" style="margin-bottom: 20rpx;">处理</text>
+    <textarea class="areainput" name="remark" placeholder="请输入修改意见"
+      auto-focus="true"
+      bindinput="inputVerify"
+    />
+    <view class="details">
+      <view class="details_btn">
+        <button type="primary" bindtap="pass">审核通过</button>
+        <button type="default" bindtap="notpass">退回修改</button>
+      </view>
+    </view>
+  </view>
+  
+</view>

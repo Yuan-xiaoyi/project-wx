@@ -1,0 +1,33 @@
+/* components/SearchInput/SearchInput.wxss */
+.search_input{
+  position: fixed;
+  width: 100%;
+  height: 90rpx;
+  padding: 10rpx;
+  background-color: var(--themeColor);
+  display: table;
+  table-layout: fixed;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 999;/*这个设置在原生组件中用于置顶导航条*/
+}
+.search_input-position{
+  position: fixed;
+  background-color:#fff
+}
+
+.search_input_item{
+  height: 100%;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  background-color:#fff;
+  border-radius: 15rpx;
+  color: #666;
+}
+.search_input_item_hover{
+  background-color: var(--textBgColor);
+}
+
+

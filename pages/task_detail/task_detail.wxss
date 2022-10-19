@@ -1,0 +1,50 @@
+/* pages/task_detail/task_detail.wxss */
+.containter{
+  display: block;
+  padding: 30rpx;
+}
+.details{
+  font-size: 30rpx;
+  width: 100%;
+  min-height: 60rpx;
+}
+.details_btn{
+  display: inline-flex;
+  width: 100%;
+}
+.details_btn button{
+  width: 45%;
+}
+.details_father{
+  display: inline-block;
+  width: 100%;
+}
+.detail_label{
+  float: left;
+  width: 180rpx;
+  height: 100%;
+  color: gray;
+}
+.detail_value{
+  float: right;
+  color: black;
+  margin: 10rpx 0;
+  text-indent: 20rpx;
+}
+.detail_context{
+  width: calc(100% - 200rpx);
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+}
+.areainput{
+  width: calc(100% - 22rpx);
+  border: 1px lightgray solid;
+  background-color: #F8F8F8;
+  margin-bottom: 20rpx;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+}

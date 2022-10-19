@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "SearchInput":"../../components/SearchInput/SearchInput"
+  },
+  "navigationBarTitleText": "所有项目"
+
+}

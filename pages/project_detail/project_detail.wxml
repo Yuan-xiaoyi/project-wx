@@ -1,0 +1,173 @@
+<!--pages/project_detail/project_detail.wxml-->
+<view class="containter">
+  <view class="details">
+    <text class="detail_label">项目名称</text>
+    <text class="detail_value"
+      bindtap="showModalFun" data-index="{{project.projectName}}"
+    >{{project.projectName}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">项目业主</text>
+    <text class="detail_value"
+      bindtap="showModalFun" data-index="{{project.proprietor}}"
+    >{{project.proprietor ? project.proprietor : '暂无'}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">主管领导</text>
+    <text class="detail_value">{{project.mainManager ? project.mainManager : '暂无'}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">分管领导</text>
+    <text class="detail_value">{{project.fenManager ? project.fenManager : '暂无'}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">经办人</text>
+    <text class="detail_value">{{project.agent ? project.agent : '暂无'}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">创建时间</text>
+    <text class="detail_value">{{project.createTime}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">是否中标</text>
+    <text class="detail_value">{{project.bidding !== null ? project.bidding : ''}}</text>
+  </view>
+  <view class="details" wx:if="{{xm_manager}}">
+    <text class="detail_label">项目经理</text>
+    <text class="detail_value">
+      <text class="detail_member" wx:for="{{members}}" wx:key="index" wx:if="{{item.role == '项目经理'}}">{{item.userName}}</text>
+    </text>
+  </view>
+  <view class="details" wx:if="{{kh_manager}}">
+    <text class="detail_label">客户经理</text>
+    <text class="detail_value">
+      <text class="detail_member" wx:for="{{members}}" wx:key="index" wx:if="{{item.role == '客户经理'}}">{{item.userName}}</text>
+    </text>
+  </view>
+  <view class="details" wx:if="{{jjfa_manager}}">
+    <text class="detail_label">解决方案经理</text>
+    <text class="detail_value">
+      <text class="detail_member" wx:for="{{members}}" wx:key="index" wx:if="{{item.role == '解决方案经理'}}">{{item.userName}}</text>
+    </text>
+  </view>
+  <view class="details">
+    <text class="detail_label">项目描述</text>
+    <text class="detail_value" 
+      bindtap="showModalFun" data-index="{{project.details}}" 
+    >{{project.details}}</text>
+  </view>
+  <view class="details">
+    <text class="detail_label">
+      任务及反馈
+    </text>
+    <button class="detail_value detail_btn plus" size="mini" type="primary"
+      bindtap="btn_add">任务指派</button>
+    <button class="detail_value detail_btn plus" size="mini" type="primary"
+      bindtap="btn_add2">情况反馈</button>
+  </view>  
+</view>
+
+<!-- wx:if="{{showTaskDetail}}" -->
+<view  style="padding: 30rpx"> 
+  <view wx:for="{{taskList}}" wx:key="index" class="taskDetail">
+    <view class="collect_icon">
+      <view class="header"></view>
+      <view class="line"></view>
+    </view>
+    <view style="width: 100%;">
+      <view class="detail_date">
+        <text style="margin-right: 16rpx;">{{item.createTime}}</text>
+        <text wx:if="{{item.isTask == 1}}" class="{{item.state == 0 ? 'noend' : 'hasend'}}">{{item.state == 0 ? '未完结' : '已完结'}}</text>
+      </view>
+      <view wx:if="{{item.isTask == 1}}" bindtap="gotoDetails" data-index="{{item}}" hover-class="blockContent_hover">
+        <view class="detail_total">
+          <text class="detail_name">任务详情</text>
+          <text class="detail_text">{{item.details}}</text>
+        </view>
+        <view class="detail_total" >
+          <text class="detail_name">处理结果</text>
+          <text class="detail_text">{{item.solveDetails ? item.solveDetails : "暂无"}}</text>
+        </view>
+      </view>
+      <view wx:if="{{item.isTask == 0}}" bindtap="showStageModal" data-index="{{item.details}}" hover-class="blockContent_hover">
+        <view class="detail_total">
+          <text class="detail_name">{{item.createPerson}}</text>
+          <text class="detail_text">反馈了问题</text>
+        </view>
+        <view class="detail_total">
+          <text class="detail_name">反馈详情</text>
+          <text class="detail_text">{{item.details ? item.details : "暂无"}}</text>
+        </view>
+      
+      </view>
+    </view>
+  </view>
+</view>
+
+<modal hidden="{{showModal}}" height='60%' title="新建任务" confirm-text="" cancel-text="">
+<!--  设置footer为空，去掉 取消 确定默认按钮 -->
+　<form bindsubmit="formSubmit">
+    <view>
+      <label>任务名称</label>
+      <input name="name" class="taskinput" value="{{form.name}}" />
+    </view>
+    <view>
+      <label>任务描述</label>
+      <textarea name="detail" class="taskinput" type="text" value="{{form.detail }}" />
+    </view>
+    <view>
+      <text>要求完成时间: </text>
+      <date-picker placeholder ="选择时间" value="{{form.date}}" class="dateInput" bind:onPickerChange="onPickerChange">
+      </date-picker>
+      <view>
+        <input name="date" class="taskinput" value="{{form.date}}" style="display: none;"/>
+      </view>
+    </view>
+    <view>
+      <label>指派给</label><!---再写一个弹窗显示成员-->
+      <!-- <text name="response" type="number" value="{{form.response}}" style="width: 50%">asd</text> -->
+      <input name="response" class="taskinput" type="number" value="{{form.response}}"
+        catchtouchstart="catchtouchstart"  bindtouchend="getMembers"/>
+      <modal hidden="{{showSecondModal}}" height='80%' title="选择项目成员" 
+        bindcancel="modalSecCancel" bindconfirm="modalSecConfirm"
+      >
+        <view class="weui-cells weui-cells_after-title">
+          <radio-group bindchange="radioChange">
+            <label class="weui-cell weui-check__label" wx:for="{{members}}" wx:key="index" >
+
+              <view class="weui-cell__hd">
+                <radio value="{{item.projectMemberId}}" checked="{{item.checked}}" disabled="{{item.disabled}}"/>
+              </view>
+              <view class="weui-cell__bd">{{item.userName}}</view>
+            </label>
+          </radio-group>
+        </view>
+      </modal>
+    </view>
+    <view>
+      <input name="responseId" class="taskinput" value="{{form.responseId}}" style="display: none;"/>
+    </view>
+    <view class="sendbtn">
+      <button bindtap="modalCancel">取消</button>
+      <button type="primary" form-type="submit">确认创建</button>
+    </view>
+  </form>
+</modal>
+<modal hidden="{{showModal2}}" height='60%' title="添加反馈" confirm-text="" cancel-text="">
+<!--  设置footer为空，去掉 取消 确定默认按钮 -->
+　<form bindsubmit="formSubmit2">
+    <view>
+      <label>反馈标题</label>
+      <input name="name" class="taskinput" value="{{form2.name}}" />
+    </view>
+    <view>
+      <label>反馈内容</label>
+      <textarea name="detail" class="taskinput" type="text" value="{{form2.detail }}" />
+    </view>
+    <view class="sendbtn">
+      <button bindtap="modalCancel">取消</button>
+      <button type="primary" form-type="submit">确认添加</button>
+    </view>
+  </form>
+</modal>
+

@@ -1,0 +1,46 @@
+<!--pages/project_list/project_list.wxml-->
+<view class="pm_project_list">
+  <SearchInput searchType="project"></SearchInput>
+  
+  <!-- <view class="hotService">
+    <view class="hotServiceList_box">
+      <scroll-view class="hotServiceList_scroll" scroll-x="true" bindscroll="getleft">
+          <view class="hotService_content">
+              <block wx:for="{{typeList}}" wx:key="index">
+                  <view class="block{{index}} block">
+                      <view class="blockContent {{item.chosed?'active_block':''}}"
+                        bindtap="chooseType" data-index="{{item}}">
+                          <text>{{item.label}}</text>
+                      </view>
+                  </view>
+              </block>
+          </view>
+      </scroll-view>
+    </view>
+  </view> -->
+
+  
+  <view class="project_row {{scrollTop > 80 ? 'project_row-position' : ''}}" >
+    <view 
+      wx:for="{{statusList}}"
+      wx:key="index"
+      class="title_item {{item.chosed?'active':''}}"
+      bindtap="chooseStatus"
+      data-index="{{item}}"
+    > {{item.label}} </view>
+  </view>
+
+
+  <view 
+    wx:for="{{projectList}}"
+    wx:key="index"
+    class="project_item"
+    hover-class="project_item_hover"
+    bindtap="gotoDetail"
+    data-index="{{item}}"
+  >
+    <view class="project_title"> {{item.projectName}} </view>
+    <view class="project_detail"> {{item.details}} </view>
+  </view>
+</view>
+

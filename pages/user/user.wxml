@@ -1,0 +1,27 @@
+<view>
+  <view wx:if="{{getUserInfo}}">
+    <view class='header'>
+      <image src='/icons/wx_login.png'></image>
+    </view>
+    <view class='content'>
+      <view>申请获取以下权限</view>
+      <text>获得你的信息(昵称，头像、手机号码等)</text>
+    </view>
+    <view>
+      <button type="primary" class='bottom' withCredentials="true" lang="zh_CN" open-type="getUserInfo" bindtap="wxLogin">授权登录</button>
+    </view>
+  </view> 
+
+  <view wx:else>
+    <view class='header'>
+      <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+
+    <view class="content">
+      <!-- 个人中心1 -->
+      <button type="primary" class='bottom' withCredentials="true" lang="zh_CN" bindtap="wxOut">退出登录</button>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,67 @@
+/**index.wxss**/
+.hotService_content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.blockContent{
+  width: 41%;
+  margin: 30rpx 0 30rpx 6%;
+  height: 150rpx;
+  border: 1px gainsboro dotted;
+  background-color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35rpx;
+  font-weight: 600;
+  /* box-shadow: black; */
+  box-shadow: 5px 5px 5px gainsboro; 
+}
+.blockContent:nth-child(2n+1){
+  /* margin-right: 0; */
+}
+
+.pie{
+  width: 100%;
+  height: auto;
+  margin: 60rpx 0;
+}
+.pieHeader{
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.left {
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: -20rpx 0;
+}
+.right{
+  text-align: center;
+}
+.pieBlock{
+  display: inline-flex;
+  margin: 10rpx 20rpx;
+}
+.colorBlock{
+  width: 60rpx;
+  height: 30rpx;
+  margin: 6rpx 10rpx;
+}
+ 
+.white {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}

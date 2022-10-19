@@ -1,0 +1,25 @@
+<!--pages/task_list/task_list.wxml-->
+<view class="pm_category">
+  <SearchInput searchType="task"></SearchInput>
+  <view class="project_row {{scrollTop > 80 ? 'project_row-position' : ''}}">
+    <view 
+      wx:for="{{statusList}}" 
+      wx:key="index"
+      class="title_item {{item.chosed?'active':''}}"
+      bindtap="chooseStatus"
+      data-index="{{item}}"
+    > {{item.label}} </view>
+  </view>
+
+  <view 
+    wx:for="{{taskList}}"
+    wx:key="index"
+    hover-class="project_item_hover"
+    bindtap="gotoDetail"
+    data-index="{{item}}"
+    class="project_item {{item.taskDetail.taskStatus == 1 ? 'project_yellow' : item.taskDetail.taskStatus == -1 ? 'project_red' : ''}}"
+  >
+    <view class="project_title"> {{item.taskDetail.taskName}} </view>
+    <view class="project_detail"> {{item.taskDetail.details}} </view>
+  </view>
+</view>

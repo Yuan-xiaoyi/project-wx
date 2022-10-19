@@ -1,0 +1,22 @@
+<!--pages/search/search.wxml-->
+ <view class="search_input">
+  <input name="name" class="inputBorder" value="{{searchValue}}" auto-focus="true"
+    placeholder="请输入搜索内容" bindinput="getValue" data-params="searchValue"
+  />
+  <button class="inputBtn" size="mini" bindtap="search">
+    <text style="line-height: 3;">搜索</text>
+  </button>
+</view>
+<view>
+  <view 
+    wx:for="{{list}}"
+    wx:key="index"
+    class="project_item"
+    hover-class="project_item_hover"
+    bindtap="gotoDetail"
+    data-index="{{item}}"
+  >
+    <view class="project_title"> {{searchType == "project" ? item.projectName : item.taskName}} </view>
+    <view class="project_detail"> {{item.details}} </view>
+  </view>
+</view>

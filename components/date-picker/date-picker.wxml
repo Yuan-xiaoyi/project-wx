@@ -1,0 +1,8 @@
+<!--components/date-picker/date-picker.wxml-->
+<view class="picker-class">
+  <picker style="width: 100%;" disabled="{{disabled}}" mode="multiSelector" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" bindcancel ="pickerCancel" range="{{pickerArray}}" range-key="{{'name'}}">
+    <view class="{{value ? 'value-style' : 'placeholder'}}">
+      {{value ? value : placeholder}}
+    </view>
+  </picker>
+</view>
